@@ -7,6 +7,7 @@ public class TestTest {
 		// create object for customer
 		
 		Customer cust = new Customer();
+		cust.get
 	}
 
 }
