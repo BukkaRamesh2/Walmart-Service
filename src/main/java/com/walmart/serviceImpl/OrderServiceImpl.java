@@ -1,14 +1,25 @@
 package com.walmart.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.walmart.model.Customer;
 import com.walmart.model.Order;
 import com.walmart.model.Product;
+import com.walmart.repository.OrderRepository;
+import com.walmart.service.CustomerService;
 import com.walmart.service.OrderService;
 
 public class OrderServiceImpl implements OrderService{
 
 
+    @Autowired
+	OrderRepository orderRepo;
+
+    @Autowired
+    CustomerService custService;
 
     @Override
     public double calculateTotal(Order order)
@@ -36,4 +47,34 @@ public class OrderServiceImpl implements OrderService{
         else 
             return 5;
     }
+
+    @Override
+    public Order saveOrder(Order order) {
+        return orderRepo.save(order);
+    }
+
+    @Override
+    public Customer getCustomerById(Long orderId) {
+
+        Order order = getOrderById(orderId);
+        Long customerId = order.getCustomerId();
+        return custService.getCustomerById(customerId);
+    }
+
+    @Override
+    public List<Order> getAllOrders() {
+        return orderRepo.findAll();
+    }
+
+    @Override
+    public Order getOrderById(Long orderId) {
+        Optional<Order> order =  orderRepo.findById(orderId);
+	        if(order.isPresent()){
+	            return order.get();
+	        }else {
+	            throw new RuntimeException();
+	        }
+    }
+
+    
 }
