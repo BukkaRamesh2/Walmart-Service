@@ -2,7 +2,10 @@ package com.walmart.model;
 
 public class Customer {
 	
-	private String name;   // access specifier datatype name 
+	private Long customerId;
+	private String firstName;   // access specifier datatype name 
+	private String lastName;
+	private String email;
 	private Long phoneNumber;
 	private int age;
 	protected String password;
@@ -38,15 +41,6 @@ public class Customer {
 	 * 
 	 */
 	 
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Long getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -85,6 +79,38 @@ public class Customer {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
+
+	public Long getCustomerId() {
+		return customerId;
 	}
 	
 	
