@@ -43,7 +43,7 @@ public class OrderController {
     }
 
     @GetMapping("/getAllOrders")
-    public List<Order> getCustomerList(){
+    public List<Order> getOrdersList(){
 	   return orderService.getAllOrders();
     }
 
