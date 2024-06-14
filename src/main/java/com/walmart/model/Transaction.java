@@ -52,5 +52,9 @@ public class Transaction {
 		this.total_amount= total_amount;
 	}
 	
+	public void message() {
+		System.out.println("This message is printed from Transaction class..");
+	}
+	
 	
 }
