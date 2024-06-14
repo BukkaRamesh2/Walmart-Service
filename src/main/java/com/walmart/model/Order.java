@@ -3,21 +3,22 @@ import java.util.Date;
 import java.util.List;
 
 public class Order {
-    private long id; //
+    private long orderId; //
+    private Long customerId;
     private String name;
     private String status;
-    private List<String> list;
+    private List<Product> list;
     private Date date; 
 
     
 
     public long getId() {
-        return id;
+        return orderId;
     }
 
     
-    public void setId(long id) {
-        this.id = id;
+    public void setId(long orderId) {
+        this.orderId = orderId;
     }
 
     public String getName() {
@@ -36,11 +37,11 @@ public class Order {
         this.status = status;
     }
 
-    public List<String> getList() {
+    public List<Product> getList() {
         return list;
     }
 
-    public void setList(List<String> list) {
+    public void setList(List<Product> list) {
         this.list = list;
     }
 
@@ -50,6 +51,14 @@ public class Order {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
 }
