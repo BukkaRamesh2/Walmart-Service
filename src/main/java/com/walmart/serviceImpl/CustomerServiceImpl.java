@@ -21,8 +21,28 @@ public class CustomerServiceImpl implements CustomerService{
 		  return custRepo.save(customer);
 	}
 
-	
+	// method 1 with one paramater i.e. ID
 	public Customer getCustomerById(Long customerId) {
+		try {
+			
+			Optional<Customer> cust =  custRepo.findById(customerId);
+	        if(cust.isPresent()){
+	            return cust.get();
+	        }else {
+	            throw new RuntimeException();
+	        }
+	       //return cust.get();
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			System.out.println("Finally block executed");
+		}
+		return null;
+	}
+
+	
+	// same method but different signiture 
+	public Customer getCustomerById(Long customerId, String firstName) throws RuntimeException{
 		 Optional<Customer> cust =  custRepo.findById(customerId);
 	        if(cust.isPresent()){
 	            return cust.get();
@@ -30,7 +50,8 @@ public class CustomerServiceImpl implements CustomerService{
 	            throw new RuntimeException();
 	        }
 	}
-
+	
+	
 
 	public List<Customer> getAllCustomers() {
 		return custRepo.findAll();

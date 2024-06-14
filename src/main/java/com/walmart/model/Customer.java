@@ -1,6 +1,6 @@
 package com.walmart.model;
 
-public class Customer {
+public class Customer extends Address{
 	
 	private Long customerId;
 	private String firstName;   // access specifier datatype name 
@@ -9,8 +9,10 @@ public class Customer {
 	private Long phoneNumber;
 	private int age;
 	protected String password;
-	private String address;
+	//private String address;
 	private boolean status;
+	
+	private Address address; // has a relationship  // aggrregation 
 	
 	/*
 	 * 
@@ -36,9 +38,36 @@ public class Customer {
 	 *   string  -- combination of characters
 	 *   
 	 *   
+	 *   decision making statments 
+	 *   
+	 *   loops 
+	 *   control statments 
 	 *   
 	 *   
-	 * 
+	 *   OOPS 
+	 *   Exception handling 
+	 *   
+	 *   Inheritance --  extends, aggretaion 
+	 *   polymorphism --- method overloading , method overriding 
+	 *   
+	 *   
+	 *   checked exceptions  -- 
+	 *   unchecked exceptions -- 
+	 *   
+	 *   
+	 *   try{
+	 *      // business logic 
+	 *   } catch(Exception e){
+	 *      e.p
+	 *      
+	 *   }
+	 *   
+	 *   throw  // always used inside catch block
+	 *   throws  // always used followed by your method signiture
+	 *   finally  // block of code we write what ever exception the filany block will exeute by dafault 
+	 *   
+	 *   customer exceptions
+	 *    
 	 */
 	 
 	public Long getPhoneNumber() {
@@ -65,11 +94,11 @@ public class Customer {
 		this.password = password;
 	}
 
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 
@@ -115,7 +144,10 @@ public class Customer {
 	
 	
 	 
-	
+	public void messgae() {
+		  System.out.println("this messge is from customner class");
+	  }
+	  
 	
 	
 	
