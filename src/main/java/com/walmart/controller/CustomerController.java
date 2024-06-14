@@ -26,8 +26,32 @@ public class CustomerController {
    @Autowired
    private CustomerService custService;
    
+   
+   
+   /*
+    * 
+    * 
+    *  {
+    *   
+    *   firstName: value
+    *   lastname: vlaue
+    *   address {
+    *     street: value,
+    *     state: value,
+    *     
+    *   }
+    *  
+    *  }
+    *  
+    *  
+    * 
+    */
    @PostMapping("/save")
    public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer){
+	   
+	   //customer.getAddress().getCountry();
+	   customer.messgae();  // what's the output
+	   
 	   return new ResponseEntity<Customer>(custService.saveCustomer(customer), HttpStatus.CREATED);
    }
    
@@ -54,6 +78,6 @@ public class CustomerController {
    
    }
    
-	
+
 
 }
