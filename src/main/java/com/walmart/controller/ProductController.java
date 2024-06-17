@@ -1,11 +1,9 @@
 package com.walmart.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import com.walmart.controller.GetMapping;
-import com.walmart.controller.List;
-import com.walmart.controller.RequestMapping;
-import com.walmart.controller.RestController;
-import com.walmart.model.Product;
+import com.walmart.service.ProductService;
 
 /*
  * @RestController
@@ -17,23 +15,20 @@ import com.walmart.model.Product;
  * productService.getAllProducts(); } }
  */
 
-public class ProductController { 
-	
-@GetMapping
-public String getProductDetailsById(int productId)
-{
-	
-	String productDescription;
-    ProductService productService = new ProductService();
+public class ProductController {
 
-    if(productId != null) {
-    productDescription = productService.getProductDescription(productId);
-    }else
-    {
-    	productDescription = "Check the Product ID";
-    }
-    
-    return productDescription;
-    
-}
+	@Autowired
+	ProductService productService;
+
+	@GetMapping
+	public String getProductDetailsById(int productId) {
+
+		String productDescription;
+
+		productDescription = productService.getProductDescription(productId);
+
+		return productDescription;
+
+	}
+
 }

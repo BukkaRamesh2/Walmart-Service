@@ -25,6 +25,9 @@ public class Test {
 	 *  product -- mythili 
 	 *  
 	 *  
+	 *  Inventory -- shanthan
+	 *  
+	 *  
 	 *  Controller -- whete it contains HTTP functions 
 	 *  Service -- interfaces -- it contains what operations we are performing
 	 *  Service Impl -- business logic associated with services
