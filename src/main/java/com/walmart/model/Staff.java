@@ -1,4 +1,7 @@
 package com.walmart.model;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Staff {
 	private int id;
@@ -79,5 +82,20 @@ public class Staff {
 		phoneNumber = newPhoneNumber;
 	}
 	
+	public void makeList(Staff[] array)
+	{
+		Staff[] newArray = Arrays.copyOf(array, array.length);
+		List<Staff> staff = new ArrayList<>();
+		
+		for (int i = 0; i < newArray.length; i++)
+		{
+			if (newArray[i] != null)
+			{
+				staff.add(newArray[i]);
+				newArray[i] = null;
+			}
+		}
+	}
 }
+
 

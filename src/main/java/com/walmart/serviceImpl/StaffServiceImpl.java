@@ -46,5 +46,21 @@ public class StaffServiceImpl {
 		        throw new Exception("Invalid Department");
 		    }
 		}
+	
+	public void printPhoneNumber(Staff staff)
+	{
+		String phoneNum = "";
+		
+		try
+		{
+			phoneNum = staff.getPhoneNumber();
+		}
+		catch (NullPointerException e)
+		{
+			System.out.print("No Phone Number");
+		}
+		
+		System.out.print(phoneNum);
+	}
 
 }
