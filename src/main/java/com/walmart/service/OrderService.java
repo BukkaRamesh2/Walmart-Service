@@ -11,7 +11,7 @@ public interface OrderService {
 
     public int getDiscount(Order order);
 
-    Order saveOrder(Order order);
+    String saveOrder(Order order);
 
     Customer getCustomerById(Long orderId);
 

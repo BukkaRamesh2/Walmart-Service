@@ -26,8 +26,8 @@ public class OrderController {
 
 
     @PostMapping("/save")
-    public ResponseEntity<Order> saveOrder(@RequestBody Order order){
-	   return new ResponseEntity<Order>(orderService.saveOrder(order), HttpStatus.CREATED);
+    public ResponseEntity<String> saveOrder(@RequestBody Order order){
+	   return new ResponseEntity<String>(orderService.saveOrder(order), HttpStatus.CREATED);
     }
 
     @GetMapping("/getOrderById/{orderId}")

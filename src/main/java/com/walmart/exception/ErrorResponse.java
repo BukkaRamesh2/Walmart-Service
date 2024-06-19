@@ -3,7 +3,10 @@ package com.walmart.exception;
 public class ErrorResponse {
     private String message;
 
-    public ErrorResponse(String message) {
+    private int StatusCode;
+
+    public ErrorResponse(int StatusCode, String message) {
+        this.StatusCode = StatusCode;
         this.message = message;
     }
 
