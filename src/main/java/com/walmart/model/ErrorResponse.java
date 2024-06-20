@@ -4,8 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class ErrorResponse {
 
     private int statusCode;
@@ -17,7 +15,7 @@ public class ErrorResponse {
         this.message = message;
     }
 
-	public ErrorResponse(int statusCode, String message2) {
+	public ErrorResponse(int statusCode, String message) {
 		// TODO Auto-generated constructor stub
 	}
 }
