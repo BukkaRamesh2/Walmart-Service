@@ -21,7 +21,7 @@ public class ProductController {
 	ProductService productService;
 
 	@GetMapping
-	public String getProductDetailsById(int productId) {
+	public String getProductDetailsById(Long productId) {
 
 		String productDescription;
 

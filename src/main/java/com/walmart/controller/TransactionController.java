@@ -41,7 +41,7 @@ public class TransactionController {
 	}
 	
 	@GetMapping("/getById/{transactionId}")
-	   public ResponseEntity<Transaction> getTransactionById(@PathVariable("id") int transaction_id){
+	   public ResponseEntity<Transaction> getTransactionById(@PathVariable("id") Long transaction_id){
 		   return new ResponseEntity<Transaction>(transService.getTransactionById(transaction_id), HttpStatus.OK);
 
 	   }
@@ -52,12 +52,12 @@ public class TransactionController {
 	   }
 	   
 	   @PutMapping("/updateTransaction/{transaction_id}")
-	   public ResponseEntity<Transaction>  updateTransaction(@RequestBody Transaction trans, @PathVariable("id") int transaction_id){
+	   public ResponseEntity<Transaction>  updateTransaction(@RequestBody Transaction trans, @PathVariable("id") Long transaction_id){
 	       return new ResponseEntity<Transaction>(transService.updateTransaction(trans,transaction_id),HttpStatus.OK);
 	   }
 	   
 	   @DeleteMapping("/deleteTransaction/{transaction_id}")
-	   ResponseEntity<String> deleteTransaction(@PathVariable("id") int transaction_id){
+	   ResponseEntity<String> deleteTransaction(@PathVariable("id") Long transaction_id){
 		   transService.deleteTransaction(transaction_id);
 	       return new ResponseEntity<String>("Transaction deleted Successfully.",HttpStatus.OK);
 	   

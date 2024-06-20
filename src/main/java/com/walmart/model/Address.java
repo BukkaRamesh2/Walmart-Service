@@ -1,13 +1,36 @@
 package com.walmart.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Address")
 public class Address {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)	
+	private Long addressId;
 	
+	@Column(name = "street")
   private String street;
+	
+	@Column(name = "state")
   private String state;
+	
+	@Column(name = "city")
   private String city;
+	
+	@Column(name = "country")
   private String country;
+	
+	@Column(name = "zipcode")
   private Long zipcode;
+	
+	
 public String getStreet() {
 	return street;
 }

@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.walmart.model.Transaction;
 
-public interface TransactionRepository extends JpaRepository<Transaction, int> {
+public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 	
 
 }

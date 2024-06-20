@@ -1,18 +1,43 @@
 package com.walmart.model;
 
-public class Customer extends Address{
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Customer")
+public class Customer{
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long customerId;
+	
+	@Column(name = "firstName")
 	private String firstName;   // access specifier datatype name 
+	
+	@Column(name = "lastName")
 	private String lastName;
+	
+	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "phoneNumber")
 	private Long phoneNumber;
+	
+	@Column(name = "age")
 	private int age;
+	
+	@Column(name = "password")
 	protected String password;
 	//private String address;
+	
+	@Column(name = "status")
 	private boolean status;
 	
-	private Address address; // has a relationship  // aggrregation 
+	//private Address address; // has a relationship  // aggrregation 
 	
 	/*
 	 * 
@@ -94,13 +119,7 @@ public class Customer extends Address{
 		this.password = password;
 	}
 
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+	
 
 	public boolean isStatus() {
 		return status;

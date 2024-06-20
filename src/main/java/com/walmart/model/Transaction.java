@@ -2,21 +2,42 @@ package com.walmart.model;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Transaction")
 public class Transaction {
 
-	private int transaction_id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long transaction_id;
+	
+	@Column(name = "receipt_number")
 	private int receipt_number;
+	
+	@Column(name = "customer_id")
 	private int customer_id;
+	
+	@Column(name = "status")
 	private String status;
+	
+	@Column(name = "date")
 	private Date date;
+	
+	@Column(name = "total_amount")
 	private int total_amount;
 	
 
-	public int getTransaction_id() {
+	public Long getTransaction_id() {
 		return transaction_id;
 	}
 	
-	public void setTransaction_id(int transaction_id) {
+	public void setTransaction_id(Long transaction_id) {
 		this.transaction_id =  transaction_id;
 	}
 	

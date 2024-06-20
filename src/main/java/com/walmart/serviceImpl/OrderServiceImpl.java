@@ -4,14 +4,17 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.walmart.model.Customer;
 import com.walmart.model.Order;
 import com.walmart.model.Product;
 import com.walmart.repository.OrderRepository;
+import com.walmart.repository.ProductRepository;
 import com.walmart.service.CustomerService;
 import com.walmart.service.OrderService;
 
+@Service
 public class OrderServiceImpl implements OrderService{
 
 
@@ -19,13 +22,16 @@ public class OrderServiceImpl implements OrderService{
 	OrderRepository orderRepo;
 
     @Autowired
+  	ProductRepository productRepo;
+    
+    @Autowired
     CustomerService custService;
 
     @Override
     public double calculateTotal(Order order)
     {
         double total = 0;
-        List<Product> list = order.getList();
+        List<Product> list = productRepo.findAll();
         for(int i=0;i<list.size();i++)
         {
             total += list.get(i).getPrice();

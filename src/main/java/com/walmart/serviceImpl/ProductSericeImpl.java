@@ -1,8 +1,11 @@
 package com.walmart.serviceImpl;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ProductSericeImpl {
 
-	public String getProductDescription(int productId) {		
+	public String getProductDescription(Long productId) {		
 		if(productId == 1) {
 			return "Product Description 1";
 		}else if(productId == 2) {

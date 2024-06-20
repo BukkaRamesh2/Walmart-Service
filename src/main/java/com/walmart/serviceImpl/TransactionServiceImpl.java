@@ -11,7 +11,7 @@ import com.walmart.model.Transaction;
 import com.walmart.repository.TransactionRepository;
 import com.walmart.service.TransactionService;
 
-
+@Service
 public class TransactionServiceImpl implements TransactionService{
 
 	@Autowired
@@ -21,7 +21,7 @@ public class TransactionServiceImpl implements TransactionService{
 		  return transRepo.save(trans);
 	}
 
-	public Transaction getTransactionrById(int transaction_id) {
+	public Transaction getTransactionrById(Long transaction_id) {
 		try {
 			
 			Optional<Transaction> trans =  transRepo.findById(transaction_id);
@@ -40,7 +40,7 @@ public class TransactionServiceImpl implements TransactionService{
 	}
 // lol yes
 	
-		public Transaction getTransactionById(int transaction_id, int receipt_number) throws RuntimeException{
+		public Transaction getTransactionById(Long transaction_id, int receipt_number) throws RuntimeException{
 		 Optional<Transaction> trans =  transRepo.findById(transaction_id);
 	        if(trans.isPresent()){
 	            return trans.get();
@@ -56,7 +56,7 @@ public class TransactionServiceImpl implements TransactionService{
 	}
 
 
-	public Transaction updateTransaction(Transaction trans, int transaction_id) {
+	public Transaction updateTransaction(Transaction trans, Long transaction_id) {
 		Transaction existingTrans = transRepo.findById(transaction_id).get();
 		
 		    existingTrans.setStatus(trans.getStatus());
@@ -67,9 +67,9 @@ public class TransactionServiceImpl implements TransactionService{
 	        return existingTrans;
 	}
 
-	public void deleteTransaction(int transaction_id) {
+	public void deleteTransaction(Long transaction_id) {
 		Optional<Transaction> trans = transRepo.findById(transaction_id);
-		if(trans.get().getTransactionId() != null) {
+		if(trans.get().getTransaction_id() != null) {
 			transRepo.deleteById(transaction_id);
 		} else {
 			System.out.println("Transaction not found");
@@ -77,8 +77,9 @@ public class TransactionServiceImpl implements TransactionService{
 		
 	}
 
+	
 	@Override
-	public Transaction getTransactionById(int transaction_id) {
+	public Transaction getTransactionById(Long transaction_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
