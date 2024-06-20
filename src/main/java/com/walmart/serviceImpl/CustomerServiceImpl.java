@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.walmart.exception.ArrayExcepions;
+import com.walmart.exception.CustomerNotFoundException;
+import com.walmart.exception.NoSuchCustomerExistsException;
 import com.walmart.model.Customer;
 import com.walmart.repository.CustomerRepository;
 import com.walmart.service.CustomerService;
@@ -71,11 +73,12 @@ public class CustomerServiceImpl implements CustomerService{
 	        if(cust.isPresent()){
 	            return cust.get();
 	        }else {
-	            throw new RuntimeException();
+		        throw new CustomerNotFoundException("Customer not found with Id : "+ customerId); 
 	        }
 	       //return cust.get();
 		}catch(Exception e) {
 			e.printStackTrace();
+
 		} finally {
 			System.out.println("Finally block executed");
 		}
@@ -116,8 +119,8 @@ public class CustomerServiceImpl implements CustomerService{
 	        if(cust.isPresent()){
 	            return cust.get();
 	        }else {
-	            throw new RuntimeException();
-	        }
+				throw new NoSuchCustomerExistsException("No Such Customer exists!!");
+			}
 	}
 	
 	

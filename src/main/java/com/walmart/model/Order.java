@@ -28,6 +28,7 @@ public class Order {
 	
     @Column(name = "date")
     private Date date;
+    
 
 	public Integer getOrderId() {
 		return orderId;
