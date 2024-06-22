@@ -6,9 +6,13 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class ProductNotFoundException {
+public class ProductNotFoundException extends Exception{
 	
-	 @ExceptionHandler(ProductNotFoundException.class)
+	 public ProductNotFoundException(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
+	@ExceptionHandler(ProductNotFoundException.class)
 	    public ResponseEntity<ErrorResponse> handleProductNotFoundException(ProductNotFoundException e) {
 	        ErrorResponse err = new ErrorResponse(e.getMessage());
 	        return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);

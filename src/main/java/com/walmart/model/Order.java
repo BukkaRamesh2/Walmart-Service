@@ -15,7 +15,7 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "orderId")
-    private Integer orderId; //
+    private Long orderId; //
 	
 	@Column(name = "customerId")
     private Long customerId;
@@ -30,11 +30,11 @@ public class Order {
     private Date date;
     
 
-	public Integer getOrderId() {
+	public Long getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(Integer orderId) {
+	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
 

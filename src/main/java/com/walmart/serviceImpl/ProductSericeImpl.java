@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.walmart.exception.ProductNotFoundException;
 import com.walmart.model.Product;
 import com.walmart.repository.ProductRepository;
 

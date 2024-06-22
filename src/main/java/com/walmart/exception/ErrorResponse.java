@@ -5,6 +5,12 @@ public class ErrorResponse {
 
     private int StatusCode;
 
+    
+    public ErrorResponse(String message) {
+      
+        this.message = message;
+    }
+    
     public ErrorResponse(int StatusCode, String message) {
         this.StatusCode = StatusCode;
         this.message = message;

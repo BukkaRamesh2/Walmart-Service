@@ -58,9 +58,9 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public String saveOrder(Order order) {
-        Optional<Order> ExistingOrder =  orderRepo.findById(order.getId());
+        Optional<Order> ExistingOrder =  orderRepo.findById(order.getOrderId());
         if(ExistingOrder.isPresent()){
-            throw new OrderAlreadyExistException("Order with thr given ID is already present " + order.getId());
+            throw new OrderAlreadyExistException("Order with thr given ID is already present " + order.getOrderId());
         }else {
             orderRepo.save(order);
             return "Order Saved Successfully";
