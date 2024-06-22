@@ -3,6 +3,8 @@ package com.walmart.serviceImpl;
 import java.util.List;
 import java.util.Optional;
 
+import com.walmart.exception.OrderAlreadyExistException;
+import com.walmart.exception.OrderNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,8 +57,16 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public Order saveOrder(Order order) {
-        return orderRepo.save(order);
+    public String saveOrder(Order order) {
+        Optional<Order> ExistingOrder =  orderRepo.findById(order.getId());
+        if(ExistingOrder.isPresent()){
+            throw new OrderAlreadyExistException("Order with thr given ID is already present " + order.getId());
+        }else {
+            orderRepo.save(order);
+            return "Order Saved Successfully";
+        }
+
+
     }
 
     @Override
@@ -78,7 +88,7 @@ public class OrderServiceImpl implements OrderService{
 	        if(order.isPresent()){
 	            return order.get();
 	        }else {
-	            throw new RuntimeException();
+	            throw new OrderNotFoundException("There is no order with the ID" + orderId);
 	        }
     }
 
