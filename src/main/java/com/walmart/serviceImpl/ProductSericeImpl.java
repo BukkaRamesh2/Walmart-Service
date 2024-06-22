@@ -1,9 +1,18 @@
 package com.walmart.serviceImpl;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
 
-@Service
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.walmart.model.Product;
+import com.walmart.repository.ProductRepository;
+
+
 public class ProductSericeImpl {
+	
+	@Autowired
+	ProductRepository productRepo;
 
 	public String getProductDescription(Long productId) {		
 		if(productId == 1) {
@@ -16,5 +25,41 @@ public class ProductSericeImpl {
 			return "Product Description for other products";
 		}		
 	};
+	
+	// method 1 with one parameter i.e. ID
+	public Product getProductById(Long productId) {
+		try {
+			
+			Optional<Product> product =  productRepo.findById(productId);
+            if (product.isPresent()) {
+                return product.get();
+            } else {
+                throw new ProductNotFoundException("Product with ID " + productId + " not found.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("Finally block executed");
+        }
+        return null;
+    }
+
+		
+		// same method but different signature 
+	public Product getProductById(Long productId, String name) throws RuntimeException{
+		 Optional<Product> product =  productRepo.findById(productId);
+	        if(product.isPresent()){
+	            return product.get();
+	        }else {
+	            throw new RuntimeException();
+	        }
+	}
+		
+		
+
+	public List<Product> getAllProducts() {
+		return productRepo.findAll();
+	}
+	
 
 }
