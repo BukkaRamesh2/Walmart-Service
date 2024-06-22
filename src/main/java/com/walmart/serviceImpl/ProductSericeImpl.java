@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.walmart.model.Product;
 import com.walmart.repository.ProductRepository;
 
-
 public class ProductSericeImpl {
 	
 	@Autowired
