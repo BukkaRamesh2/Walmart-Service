@@ -126,7 +126,18 @@ public class CustomerServiceImpl implements CustomerService{
 	
 
 	public List<Customer> getAllCustomers() {
-		return custRepo.findAll();
+		
+		List<Customer> custList = custRepo.findAll();   //4 
+		for(int i=0; i < custList.size(); i++) {
+			Customer getCust = custList.get(i);
+			
+		}
+		
+		for(Customer cust: custList) {
+			 cust.getFirstName();
+		}
+		
+		return custList;
 	}
 
 
@@ -136,6 +147,8 @@ public class CustomerServiceImpl implements CustomerService{
 		    existingCust.setFirstName(cust.getFirstName());
 		    existingCust.setLastName(cust.getLastName());
 		    existingCust.setEmail(cust.getEmail());
+		    existingCust.setPhoneNumber(cust.getPhoneNumber());
+		    existingCust.setAge(cust.getAge());
 	        // save
 		    custRepo.save(existingCust);
 	        return existingCust;
