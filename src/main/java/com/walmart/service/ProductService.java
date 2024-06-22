@@ -5,7 +5,10 @@ import java.util.List;
 public interface ProductService {
 	
 	public String getProductDescription(Long productId);
+	
 
-		List<Product> getAllProducts();
+	Product getProductById(Long productId);
+
+	List<Product> getAllProducts();
 
 }
