@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.walmart.exception.ProductNotFoundException;
+import com.walmart.exception.ProductException;
 import com.walmart.model.Product;
 import com.walmart.repository.ProductRepository;
 import com.walmart.service.ProductService;
@@ -37,7 +37,7 @@ public class ProductSericeImpl implements ProductService{
             if (product.isPresent()) {
                 return product.get();
             } else {
-                throw new ProductNotFoundException("Product with ID " + productId + " not found.");
+                throw new ProductException("Product with ID " + productId + " not found.");
             }
         } catch (Exception e) {
             e.printStackTrace();
