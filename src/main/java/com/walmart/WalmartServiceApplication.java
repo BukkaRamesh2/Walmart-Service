@@ -35,6 +35,16 @@ public class WalmartServiceApplication {
 	 *    
 	 *    
 	 *    
+	 *    multi threading 
+	 *    
+	 *    
+	 *    1. thread  -- extends 
+	 *    2. runnable -- impelements 
+	 *    
+	 *    Deadlock -- , OK
+	 *    
+	 *    
+	 *    
 	 * 
 	 * 
 	 * 

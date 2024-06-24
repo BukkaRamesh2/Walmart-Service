@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ProductNotFoundException extends Exception{
 	
-	 public ProductNotFoundException(String string) {
-		// TODO Auto-generated constructor stub
+	 String message;
+	
+	 public ProductNotFoundException(String message) {
+		 super(message);
+	        this.message = message;
 	}
 
 	@ExceptionHandler(ProductNotFoundException.class)
