@@ -1,7 +1,7 @@
 package com.walmart.exception;
 import com.walmart.model.Payments;
 
-//exception
+
 public class PaymentNotFoundException extends RuntimeException {
 	
     private static final long serialVersionUID = -179578408631221928L;

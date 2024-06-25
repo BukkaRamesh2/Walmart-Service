@@ -48,7 +48,7 @@ public class ProductSericeImpl implements ProductService{
     }
 
 		
-		// same method but different signature 
+		
 	public Product getProductById(Long productId, String name) throws RuntimeException{
 		 Optional<Product> product =  productRepo.findById(productId);
 	        if(product.isPresent()){
