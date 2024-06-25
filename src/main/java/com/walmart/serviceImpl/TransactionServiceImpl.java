@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.walmart.exception.TransactionNotFoundException;
 import com.walmart.model.Transaction;
 import com.walmart.repository.TransactionRepository;
 import com.walmart.service.TransactionService;
@@ -21,14 +21,15 @@ public class TransactionServiceImpl implements TransactionService{
 		  return transRepo.save(trans);
 	}
 
-	public Transaction getTransactionrById(Long transaction_id) {
+	public Transaction getTransactionById(Long transaction_id) {
 		try {
 			
 			Optional<Transaction> trans =  transRepo.findById(transaction_id);
 	        if(trans.isPresent()){
 	            return trans.get();
 	        }else {
-	            throw new RuntimeException();
+		        throw new TransactionNotFoundException("Transaction not found with Id : "+ transaction_id); 
+
 	        }
 	       //return cust.get();
 		}catch(Exception e) {
@@ -38,7 +39,6 @@ public class TransactionServiceImpl implements TransactionService{
 		}
 		return null;
 	}
-// lol yes
 	
 		public Transaction getTransactionById(Long transaction_id, int receipt_number) throws RuntimeException{
 		 Optional<Transaction> trans =  transRepo.findById(transaction_id);
@@ -77,11 +77,5 @@ public class TransactionServiceImpl implements TransactionService{
 		
 	}
 
-	
-	@Override
-	public Transaction getTransactionById(Long transaction_id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }
