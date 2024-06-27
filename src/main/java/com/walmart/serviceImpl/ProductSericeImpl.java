@@ -1,12 +1,17 @@
 package com.walmart.serviceImpl;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.walmart.exception.ProductException;
+import com.walmart.model.Customer;
 import com.walmart.model.Product;
 import com.walmart.repository.ProductRepository;
 import com.walmart.service.ProductService;
@@ -16,6 +21,9 @@ public class ProductSericeImpl implements ProductService{
 	
 	@Autowired
 	ProductRepository productRepo;
+	
+    private HashMap<Long, Product> productMap = new HashMap<>();
+
 
 	public String getProductDescription(Long productId) {		
 		if(productId == 1) {
@@ -60,9 +68,39 @@ public class ProductSericeImpl implements ProductService{
 		
 		
 
-	public List<Product> getAllProducts() {
-		return productRepo.findAll();
+	public Set<Product> getAllProducts() {
+	    Set<Product> productSet = new HashSet<>();
+
+	    //Convert list to set to avoid any duplicates
+	    productSet = productRepo.findAll().stream().collect(Collectors.toSet());
+		return productSet;
+	}
+
+	@Override
+	public Product saveProduct(Product product) {
+	   return productRepo.save(product);
 	}
 	
+	public Product updateProduct(Product product, Long productId) {
+		Product existingProduct = productRepo.findById(productId).get();//orElseThrow(() -> new RuntimeException());
+		
+		existingProduct.setName(product.getName());
+		existingProduct.setPrice(product.getPrice());
+		existingProduct.setQuantity(product.getQuantity());
+		existingProduct.setDescription(product.getDescription());
+
+		productRepo.save(existingProduct);
+	    return existingProduct;
+	}
+
+	public void deleteProduct(Long productId) {
+		Optional<Product> product =  productRepo.findById(productId);//.orElseThrow(() -> new RuntimeException());
+		if(product.get().getProductid() != null) {
+			productRepo.deleteById(productId);
+		} else {
+			System.out.println("Product not found");
+		}
+		
+	}
 
 }
