@@ -27,7 +27,8 @@ public class Order {
     private Date date;
 
 	@ManyToMany
-	private List<Product> productList = new ArrayList<>();
+	@Transient
+	private List<Product> productList;
 
 	public void addProduct(Product product) {
 		productList.add(product);

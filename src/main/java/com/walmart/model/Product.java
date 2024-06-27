@@ -26,7 +26,12 @@ public class Product {
 	 private int quantity;
 
 	@ManyToMany(mappedBy = "productList")
-	List<Order> orderList = new ArrayList<>();
+	@Transient
+	List<Order> orderList;
+
+	public void addOrder(Order order) {
+		orderList.add(order);
+	}
 
 	public Long getProductid() {
 		return productid;
