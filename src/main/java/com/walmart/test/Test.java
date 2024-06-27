@@ -38,6 +38,87 @@ public class Test {
 	 * 
 	 * 
 	 * 
+	 *    @Collections 
+	 *    
+	 *    List Arraylist , Linked list 
+	 *     
+	 *    Map Key Values ... hashmap, treeemap. linkedhashap
+	 *    
+	 *    Set 
+	 *    
+	 *    
+	 *    Aggregation 
+	 *    
+	 *    
+	 *    
+	 *    Annotaions we used so far
+	 *    
+	 *    
+	 *    implements 
+	 *    extends
+	 *    
+	 *    Class implements Class -- false
+	 *    Interface extends class -- false
+	 *    Interface impments class -- false
+	 *    class impemmnets interface -- true
+	 *    class extends class -- True 
+	 *
+
+          Method overloading vs method overridding 
+          
+          
+          same methods with diff params in same class method overloading
+          same method with same params  overriding 
+          
+          
+	 *    
+	 *    Controller -- Service -- ServiceImpl -- repository 
+	 *    
+	 *    
+	 *    
+	 *    @SpringBootApplication   --- 
+	 *    @RestController   -- 
+	 *    @RequestMapping
+	 *      @GetMapping
+	 *       @Pathvariable
+	 *    @PostMapping  
+	 *      @RequestBody
+	 *      
+	 *      @Autowired
+	 *      @Service
+	 *      @Repository
+	 *      
+	 *      @Entity  --- component as model 
+	 *      @Data  -- geter and setter 
+	 *      @Id  -- prinary key 
+	 *      @GeneretadValue
+	 *      @Column
+	 *      @Transient 
+	 *      
+	 *      
+	 *        
+	 *      @ControllerAdvice
+	 *      @ExceptionHandler
+	 *        
+	 *    
+	 *    how the data is sent from controller to service ...?
+	 *    @
+	 *    
+	 *    Customer cust = new Customer();
+	 *    
+	 *    
+	 *    Service 
+	 *    -- 
+	 *    
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	
 }
