@@ -1,11 +1,9 @@
 package com.walmart.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Product")
@@ -27,7 +25,15 @@ public class Product {
 	@Column(name = "quantity")
 	 private int quantity;
 
-	 public Long getProductid() {
+	@ManyToMany(mappedBy = "productList")
+	@Transient
+	List<Order> orderList;
+
+	public void addOrder(Order order) {
+		orderList.add(order);
+	}
+
+	public Long getProductid() {
 		return productid;
 	}
 	public void setProductid(Long productid) {
@@ -57,8 +63,5 @@ public class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	 
-	 
-	
+
 }
