@@ -2,9 +2,13 @@ package com.walmart.serviceImpl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.walmart.exception.OrderAlreadyExistException;
 import com.walmart.exception.OrderNotFoundException;
+import com.walmart.service.ProcessOrderTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,13 +25,16 @@ public class OrderServiceImpl implements OrderService{
 
 
     @Autowired
-	OrderRepository orderRepo;
+	private OrderRepository orderRepo;
 
     @Autowired
-  	ProductRepository productRepo;
+  	private ProductRepository productRepo;
     
     @Autowired
-    CustomerService custService;
+    private CustomerService custService;
+
+//    @Autowired
+//    private ProcessOrderTask processOrderTask;
 
     @Override
     public double calculateTotal(Order order)
@@ -84,12 +91,17 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public Order getOrderById(Long orderId) {
-        Optional<Order> order =  orderRepo.findById(orderId);
-	        if(order.isPresent()){
-	            return order.get();
-	        }else {
-	            throw new OrderNotFoundException("There is no order with the ID" + orderId);
-	        }
+        Optional<Order> order = orderRepo.findById(orderId);
+        synchronized (order){
+            ExecutorService executorService = Executors.newFixedThreadPool(2);
+
+            if (order.isPresent()) {
+                executorService.execute(new ProcessOrderTask(orderId));
+                return order.get();
+            } else {
+                throw new OrderNotFoundException("There is no order with the ID" + orderId);
+            }
+        }
     }
 
     

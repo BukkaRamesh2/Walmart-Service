@@ -71,10 +71,4 @@ public class OrderController {
         Order order = orderService.getOrderById(orderId);
         return getTotal(order);
     }
-
-
-
-
-    
-    
 }
